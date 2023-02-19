@@ -1,98 +1,85 @@
-# regex-tutorial
-# 17 Computer Science for JavaScript: Regex Tutorial
+Regex Tutorial
+A Regular expression defines a search pattern that can check if a string contains certain letters, numbers, special characters, sets or combinations, and even white spaces.
 
-## Your Task
+Summary
+This regex tutorial will explain the validation process of an email address for jonathan.doe@gmail.com.
 
-Developers write code, but they also *write about code*. Take a moment to search the web for tutorials about any of the subjects you’ve learned so far in this course. You’re likely to find thousands of tutorials written by developers of all skill levels, including junior developers&mdash;like yourself!
+/^[a-z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
 
-Your assignment this week is to create a tutorial that explains how a specific regular expression, or regex, functions by breaking down each part of the expression and describing what it does. You'll use the template provided in the starter code to create your walkthrough.
+// will enclose the regex string
 
+^ start of the string
 
+[a-z0-9.%+-] matches any character in the string
 
-## What Is a Regex?
++will match as many times as possible
 
-A **regex**, which is short for **regular expression**, is a sequence of characters that defines a specific search pattern. When included in code or search algorithms, regular expressions can be used to find certain patterns of characters within a string, or to find and replace a character or sequence of characters within a string. They are also frequently used to validate input. 
+@ matches the character '@'
 
-For example, the following regular expression can be used to verify that user input is a valid email address:
+. matches the character '.'
 
-`/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
+{2,} matches the previous token to as many times possible
 
-Each component of this regex has a unique responsibility to make sure that a user enters an email address that begins with an unspecified number of characters preceding the `@` symbol, followed by a domain.
+$ indicates the end of the string
 
-Before you get started, watch this [introduction to regular expressions video](https://youtu.be/7DG3kCDx53c) and read [Regex Tutorial: Matching a Username](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial) to learn how to identify the different components that make up a regex. If you need any additional help, there are many resources on the web. Feel free to do your own research to find one that can help you complete this assignment.
+Table of Contents
+Anchors
+Quantifiers
+Grouping Constructs
+Bracket Expressions
+Character Classes
+The OR Operator
+Flags
+Character Escapes
+Regex Components
+A regular expression is literal, meaning that it must be wrapped in slash characters (/) for the start and end of the expression.
 
-Once you have a better understanding of what these different parts of a regular expression do, you’ll need to explain what they do for a specific regex.
+Anchors
+Anchors are symbols that signify the beginning (^) and ending ($) of the expression.
 
-You can choose one of the following regular expressions or you can choose one that you found on your own (with the exception of the one that is covered in the [Regex Tutorial: Matching a Username](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial):
+Quantifiers
+Quantifiers are considered 'greedy' in that they match as many instances in a pattern as possible. += one or more matches
 
-* Matching a Hex Value: `/^#?([a-f0-9]{6}|[a-f0-9]{3})$/`
+*= zero or more matches
 
-* Matching an Email: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
+?= zero to one time
 
-* Matching a URL: `/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/`
+{} = will match a pattern exactly in different ways {8}, {8,}, {8,16} Which means it will find the preceded pattern a minimum of 8 times , max of 16 times.
 
-* Matching an HTML Tag: `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
+[] = Represents a range of characters. [a-z]
 
-## Getting Started
+[a-z] = Lowercase range
 
-Instead of creating a repository, you’ll publish a GitHub gist. GitHub describes a **gist** as a simple way to share code snippets with others. It’s also an ideal way to demonstrate a technique, teach a principle, or show off a solution. It functions just like a repository, and you’ll use Markdown to create it, just as you do with your READMEs. Gists can include code, images, links, and anything else you can include in a README.
+[A-Z] = Uppercase range
 
-After you’ve downloaded the starter code, learn [how to create a gist](https://help.github.com/en/github/writing-on-github/creating-gists). You can also watch this [video on how to use gists](https://www.youtube.com/watch?v=wc2NlcWjQHw).
+[0-9] = numeric or digit range
 
-> **Important**: Make sure to create a **public** gist and add the `.md` file extension to the file name so that your Markdown renders correctly.
+[!@#$%&*_-] special character or nonalphanumeric range
 
-The starter code is a template with a title, introductory paragraph, summary, and table of contents. The table of contents should link to sections of the tutorial that describe the functionality of each component in the regex. Be sure to rename the template to a unique name that describes your tutorial.
+Quantifiers
+Quantifiers can be made negative by using ? Symbol after it so it will match as few instances as possible
 
-> **Note**: The regular expression that you choose might not include all of the components outlined in the starter code. After you’ve finished your walkthrough, you can remove any sections that you didn’t use.
+Grouping Constructs
+Grouping Constructs utilize parenthasis (()) to separate multiple groups or subexpressions in the same expression.
 
-Each section that describes a component should include more than just one sentence explaining what it does. It should also include a code snippet of that particular component and some examples that meet the requirements of that component.
+Bracket Expressions
+Bracket expressions represent anything inside the square brackets ([]) as a positive range of characters or patterns that contain all the characters we want to include.
 
-> **Important**: Make revisions to your gist in the GitHub gist UI. This will create a revision history that graders can use to verify that the tutorial content is yours.
+Character Classes
+A Character Class defines a set of characters to match any one in the string for a full match. Positive and negative character groups are also character classes.
 
-## Grading Requirements
+The OR Operator
+The OR operator (|) can be used to verify this expression like 1|2|3 to find any one match.
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+Flags
+Flags are located at the outside right of the expression and indicate how to search 'g' = Global search for all possibilities in the string.
 
-This Challenge is graded based on the following criteria:
+'i' = Insensitive case search in the string
 
-### Deliverables: 30%
+'m' = Multi-line search
 
-* A valid URL of your GitHub gist.
+Character Escapes
+A backlash () is a character that escapes another characters literal position
 
-* Your GitHub gist that contains the tutorial Markdown. Your gist must include the `.md` file extension so that your Markdown renders correctly.
-
-### Technical Acceptance Criteria: 50%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-    * Revisions to the tutorial must be made in the GitHub gist UI so that graders have access to your revision history.
-
-    * The tutorial must cover one of the regex examples listed above or another of your choice. You may NOT use the regex covered in the [Regex Tutorial: Matching a Username](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial).
-
-    * The tutorial must include sections that correspond to each of the components that make up the regex. You may not need to use all of the sections included in the starter code, but you should include all of the sections that correspond to the different components of the regex you chose.
-
-    * Each section that describes a component must include more than just one sentence explaining what it does. It’s okay to use online resources for assistance, but do not copy and paste; explain each component in your own words and be thorough.
-
-    * Each section that describes a component must include a code snippet of that particular component. Use backticks to display your code snippets in Markdown.
-
-    * Each section that describes a component must include at least one example that meets the requirements of that component.
-
-### Tutorial Clarity and Quality: 20%
-
-* Tutorial provides a clear explanation of how the regex works. Be as concise as possible.
-
-* Tutorial describes each regex component in a separate section.
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the GitHub gist. Give the gist a unique name.
+Author
+My name is Rhonda Van Dam and I am a Junior Full Stack Web Developer. You can view more of my work at my GitHub address. https://github.com/Rhondoid
